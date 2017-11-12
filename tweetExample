@@ -5,11 +5,11 @@ Using tweepy to get twitter data from a hashtag of your choosing from a date ran
 import tweepy
 import csv
 import pandas as pd
-CONSUMER_KEY = ''
-CONSUMER_SECRET = ''
+CONSUMER_KEY = 'ltXoBgzF9LqA1M7XHDRhuGWEv'
+CONSUMER_SECRET = '2J9nJ8XGYou050YHRJk5pTkAOmyhSeJ3jZlzhq2Dnyfn4YAFIJ'
 #You must put your own Keys in the blanks here. If you have a twitter you can get your own at apps.twitter.com
-ACCESS_TOKEN = ''
-ACCESS_SECRET = ''
+ACCESS_TOKEN = '2899848858-YTSlSMiyxU2yHkWimjmLHjukUvmjNwxYOj7AE08'
+ACCESS_SECRET = 'J7T3NtTZBk3vfFP0ggycipzvUCNirYtYoDQE9CgWe1AqQ'
 
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
