@@ -1,13 +1,10 @@
-'''
-Using the giants csv from earlier, this creates a dictionary with the TimeStamp and the Tweet. Support for sentiment should be added later
-'''
-
-
 import pandas as pd
 import re
+from textblob import TextBlob as tb
 
 
-df = pd.read_csv('~/PycharmProjects/untitled3/giants.csv', header = 0)
+
+df = pd.read_csv('~/PycharmProjects/untitled3/giants4.csv', header = 0)
 
 print(df.head())
 print(type(df))
@@ -45,8 +42,20 @@ def preprocess(s, lowercase=False):
     return tokens
 
 tweets = []
+sentiment_scores = []
+
+
 
 for index, entry in df.iterrows():
-    tweets.append({"timestamp":entry['TimeStamp'], "tweet":preprocess(entry["Tweet"])})
+    tweet = tb(entry['Tweet'])
+    sentiment_scores.append(tweet.sentiment.polarity)
+
+df["sentiment"] = sentiment_scores
+df = df[df.sentiment != 0]
+
+for index, entry in df.iterrows():
+    tweets.append({"timestamp":entry['TimeStamp'], "tweet":preprocess(entry["Tweet"]), "location":entry['Location'],  "sentiment":sentiment_scores[index]})
 
 print(tweets)
+
+print (sum(df.sentiment)/  len(df.sentiment))
